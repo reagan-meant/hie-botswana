@@ -24,6 +24,6 @@ networks:
   default:
 configs:
   fhir_converter_config:
-    file: ./config/config.json
+    file: ./config/_config.json
     labels:
       name: fhir_converter

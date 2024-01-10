@@ -2,13 +2,17 @@ version: '3.9'
 
 services:
   shared-health-record:
-    image: itechuw/shared-health-record:debug
+    image: itechuw/shared-health-record:latest
+
     networks:
       - default
       - hapi-fhir
       - shr
       - kafka
       - opencr
+    ports:
+      - "3001:3001"
+      - "3002:3001"
     configs:
       - source: shr_config
         target: /app/config/config_docker.json
@@ -16,7 +20,7 @@ services:
         target: /app/config/mediator_docker.json
     deploy:
       restart_policy:
-        condition: on-failure
+        condition: any
         delay: 5s
       resources:
         limits:
@@ -27,7 +31,7 @@ services:
           memory: 256M
 configs:
   shr_config:
-    file: ./config/config.json
+    file: ./config/_config.json
     labels:
       name: shr
   shr_mediator:
@@ -49,4 +53,6 @@ networks:
   opencr:
     name: opencr
     external: true
-  default:
+  openhim:
+    name: openhim_public
+    external: true
