@@ -93,7 +93,7 @@ jobs:
 
             CYCLENAME="Postman Run on $env_name | collection: $collection_name | date: $(date +%Y%m%d%H%M)"
             # Construct newman command
-            newman_cmd="newman run https://api.getpostman.com/collections/$collection_uuid?apikey=\"$pm_api_key\"  -e \"$env_file\" --delay-request 250"
+            newman_cmd="newman run https://api.getpostman.com/collections/$collection_uuid?apikey=\"$POSTMAN_API_KEY\"  -e \"$env_file\" --delay-request 250"
 
             # Add publishing options if publish is true
             if $publish; then
