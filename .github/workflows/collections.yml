@@ -36,6 +36,8 @@ jobs:
     - name: Login to Postman CLI
       env:
         POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
+        API_TOKEN: ${{ secrets.API_TOKEN }}
+        JIRA_PAT: ${{ secrets.JIRA_PAT }}
       run: |
         postman login --with-api-key "$POSTMAN_API_KEY"
         
