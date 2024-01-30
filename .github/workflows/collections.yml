@@ -42,9 +42,9 @@ jobs:
     - name: Run Postman Collections
       shell: bash
       env:
+        POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
         API_TOKEN: ${{ secrets.API_TOKEN }}
         JIRA_PAT: ${{ secrets.JIRA_PAT }}
-        POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
       run: |
         # Replace the following line with the content of your script
         bash -c '
