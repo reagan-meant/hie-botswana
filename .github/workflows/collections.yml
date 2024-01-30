@@ -1,0 +1,50 @@
+
+name: Run Postman Collections
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  postmanCollections:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Install Newman
+      run: npm install -g newman
+
+    - name: Install aiotests reporter
+      run: npm install -g newman-reporter-aiotests 
+    
+    - name: Install Postman CLI
+      run: |
+        curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh    
+
+    - name: Login to Postman CLI
+      env:
+        POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
+      run: |
+        postman login --with-api-key "$POSTMAN_API_KEY"
+        
+    - name: Run Postman Collections
+      env:
+        POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
+        API_TOKEN: ${{ secrets.API_TOKEN }}
+        JIRA_PAT: ${{ secrets.JIRA_PAT }}
+      run: |
+        .github/workflows/scripts/postman.sh
+        chmod +x .github/workflows/scripts/postman.sh
+      shell: bash
