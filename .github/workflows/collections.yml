@@ -59,6 +59,7 @@ jobs:
           #api_token= "$API_TOKEN"
           #jira_pat= "$JIRA_PAT"
           postman login --with-api-key "$POSTMAN_API_KEY"
+          echo "I have runn"
           # Parse command line options
           while getopts ":d:e:p" opt; do
             case $opt in
