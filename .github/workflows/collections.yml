@@ -46,9 +46,6 @@ jobs:
         API_TOKEN: ${{ secrets.API_TOKEN }}
         JIRA_PAT: ${{ secrets.JIRA_PAT }}
       run: |
-        # Replace the following line with the content of your script
-        bash -c '
-          #!/bin/bash
 
           # Default values
           source_dir="postman"
@@ -114,5 +111,5 @@ jobs:
             # Execute the constructed newman command
             eval $newman_cmd
           done
-        '
+        
 
