@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  mypostman:
+  postmanCollections:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,7 +37,6 @@ jobs:
       env:
         POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
       run: |
-        echo "$POSTMAN_API_KEY"
         postman login --with-api-key "$POSTMAN_API_KEY"
         
     - name: Run Postman Collections
@@ -46,4 +45,6 @@ jobs:
         API_TOKEN: ${{ secrets.API_TOKEN }}
         JIRA_PAT: ${{ secrets.JIRA_PAT }}
       run: |
-        ./.github/workflows/scripts/postman.sh
+        .github/workflows/scripts/postman.sh
+        chmod +x .github/workflows/scripts/postman.sh
+      shell: bash
