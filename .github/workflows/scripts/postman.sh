@@ -7,6 +7,9 @@ collection_uuids=("1525496-77f89792-c73b-4c75-a450-5cb6f79230d4" "1525496-16a5a3
 collection_names=("Service Status Tests" "Client Registry Workflow" "Laboratory Order Workflow" "Omang, BDRS & Immigration")
 publish=false
 echo "I have runnnbnb"
+echo "$POSTMAN_API_KEY"
+echo "$API_TOKEN"
+echo "$JIRA_PAT"
 
 # Login to Postman
 postman login --with-api-key "$POSTMAN_API_KEY"
