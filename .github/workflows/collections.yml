@@ -40,6 +40,7 @@ jobs:
         postman login --with-api-key "$POSTMAN_API_KEY"
         
     - name: Run Postman Collections
+      shell: bash
       env:
         API_TOKEN: ${{ secrets.API_TOKEN }}
         JIRA_PAT: ${{ secrets.JIRA_PAT }}
